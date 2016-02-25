@@ -6,6 +6,7 @@ import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +47,9 @@ public class GuestbookController {
         
         model.addAttribute("number", number);
         
-        
+        Solution solution= new Solution();
+        ArrayList<String> letterCombinations = solution.letterCombinations(number+"");
+        model.addAttribute("letterCombinations", letterCombinations);
         
         
         return "list";
