@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Greeting</title>
+</head>
+<body>
+<h1>HOME</h1>
+<a th:href="${loginUrl}" th:if="${loginUrl}">Login</a>
+<a th:href="${logoutUrl}" th:if="${logoutUrl}">Logout</a>
+
+<form th:action="@{/}" method="post">
+   
+    <input type="number" name="number" th:if="${username}" />
+    
+    <input type="submit" value="Submit" th:if="${username}"/>
+</form>
+<ul>
+    <li th:each="greeting : ${greetings}">
+        <span th:text="${greeting.getProperty('name')}">name</span> :
+        <span th:text="${greeting.getProperty('content')}">content</span> :
+        <span th:text="${greeting.getProperty('date')}">content</span>
+    </li>
+</ul>
+
+<span th:text="${number}"></span>
+<span th:text="${totalCombinations}"></span>
+
+
+</body>
+</html>
