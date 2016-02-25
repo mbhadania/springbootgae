@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class GuestbookController {
@@ -43,15 +44,16 @@ public class GuestbookController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    String greet(@RequestParam("number") int number, Model model) {
+    @ResponseBody        
+    OutputService combos(@RequestParam("number") int number) {
         
-        model.addAttribute("number", number);
+   //     model.addAttribute("number", number);
         
         Solution solution= new Solution();
         ArrayList<String> letterCombinations = solution.letterCombinations(number+"");
-        model.addAttribute("letterCombinations", letterCombinations);
+     //   model.addAttribute("letterCombinations", letterCombinations);
         
         
-        return "list";
+        return new OutputService(letterCombinations);
     }
 }

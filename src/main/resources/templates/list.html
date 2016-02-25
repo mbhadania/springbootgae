@@ -24,7 +24,14 @@
 </ul>
 
 <span th:text="${number}"></span>
-<span th:text="${letterCombinations}"></span>
+<ul>
+    <li th:each="combo : ${letterCombinations}">
+        <span th:text="${combo}"></span> :
+        
+    </li>
+</ul>
+
+<!--span th:text="${letterCombinations}"></span-->
 
 
 </body>
